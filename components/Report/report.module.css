@@ -1,0 +1,125 @@
+.report {
+  box-sizing: border-box;
+  padding-right: 26px;
+  cursor: pointer;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+}
+
+.report .warning {
+  width: 20px;
+  height: 20px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8BAMAAADI0sRBAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAnUExURUdwTHuKpYGOqnuKpHyKpH+MpnyKpHyKo3yJo3yKpX2KpXyKpHuJoyCdpd4AAAAMdFJOUwBVF/e8LIvT6mxGppNiUdYAAAGQSURBVDjLzZS/UsJAEMY3GcERG20sHIvMYEHpONql4AFSMGNrgT0FD0DljB2FD5BCewsfwEIHBITvobzL3l1CspuabRLycbe7v/1DdDDWGbWp3XQzbpEzYN1yGMb0430r36ryF5YZdmrYwP0DoAV/ZBwb90NF/sAiiVNsFXmGFdFESy0CnokGwJkoHwOvRCfAVJRzvnaGP0mN5/ixzytsEpno1PkYy0Tf7LMnc51gSXR9l5iyrQSiKX5tRYf0iEWT6ynwSZTixr3VzJwxAQPfFBf3NBrFerQyR7FvvYIoywOXQ4MoywLXHBvyMs0bXN0Xlt1/S/P3sew8leajYdnFWSMa5DrXQMJSC4xqRImZV38HolwFW7FQnxpRIRaSO6Bf5drsn26Va7P7fF+S0rt5OSyVCrnI97hW5ibz8xmVXCtT56j5eXREt1Q/XUyzTyJMfPBd7ILiRd4XdpO4hbOT91DxOVZ2VZ+dR8qm63K6Rn46F+yC5Q5UGzEAxdY+MdleOMNMOexoxO9SaJcjOmj7B34lJ4rzRnZBAAAAAElFTkSuQmCC) no-repeat 50% / cover;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.report .labelreport {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: normal;
+  color: #7b89a3;
+}
+
+.mxevtreportmodal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 480px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  z-index: 1000;
+}
+
+.mxevtreportmodal * {
+  box-sizing: border-box;
+}
+
+.mxevtreportmodal .mainbody {
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+  padding: 15px 8px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.mxevtreportmodal .mainbody .title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #35344c;
+  margin-bottom: 8px;
+}
+
+.mxevtreportmodal .mainbody .title .close {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  float: right;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABIBAMAAACnw650AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAVUExURUdwTJaju6uu1peju5mkvpejupaiuvKB74IAAAAGdFJOUwCzBWsu+YX74jIAAADKSURBVEjH7ZQ9DoMwDIUjygVgYG7VG3To3KUHQOICUVXf/wiASBRbcZwn0W55m3/4ghL7OdfU9Af1w0MmLsMra3qTv/K4m75L1jQRjTy+EXmtiaO6LZ6zpicJ1AaiT9a0ZxNqB8njlbT8REcVQLJQAvFKEcRLZVCqGaBUtECxaoIiygYFlA0KqAroQFVAEWWDAmp055ug45Afh64AuUzoWZAHhkYFGTpofJFFgFYKWU5ozSHDgKxHMTGP2OEMGCstdYu+Kxbd1PQDrQs3bmLJblobAAAAAElFTkSuQmCC) no-repeat 50% / cover;
+}
+
+.mxevtreportmodal .mainbody .listItem {
+  padding: 8px 0;
+  height: 35px;
+  width: 100%;
+  font-family: Muli;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: normal;
+  color: #505a78;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.mxevtreportmodal .mainbody .listItem .radio {
+  width: 20px;
+  height: 20px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABIBAMAAACnw650AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAYUExURU9beEdwTFdggVBceFFcfFBceFBbeVJaeR4GPzAAAAAIdFJOU4oADWQjVHw80OfFIQAAAXBJREFUSMfdlj1PwzAQhg9Kw0pdo65YVJ1TBlgbBuaywBoV2KkQ/x87Zzv+uFTvwNQbnSf26/s0LQCjM4H072PffLx3JyD1Q96ezBSkW4o262QoZXJqhNSeMpsbAXqhwj5raOUVPxu19vqPFTQc9uWFrN+GA0voPpfBAh8KqM2lMjXLoVu71GR+1r1des2gb7tyyGOxsUvXKaSTvaM5BV0Cub+2JbSMu1O4f1NnSB+8QOG0Qw1twnkUNu5qSAcRA7RLvJuaVXEVIXuPSwm683d2kBrdlptzsfGQTYDGSJDqORWIdc/lMtmzcgfdeH212RtdeGg3oTv+ThzdrQwtOcbEJx9laMVqid3UyZBmRxEH0siQ4sDDkPXrZD8ZPsHQ/2mCXAA5EwqLj/XpAEOpMp107Zh0UPpChQCVFFacUJlDDQNqPVgTg9oh1FixFg01+3JsLMSxkQ8gLQ8gbJRBQxEbr9CgxkY+9njAniFn9xL7A+virx90IOApAAAAAElFTkSuQmCC) no-repeat 50% / cover;
+  display: inline-block;
+}
+
+.mxevtreportmodal .mainbody .listItem .type {
+  display: inline-block;
+  font-size: 13px;
+  line-height: 20px;
+  vertical-align: text-bottom;
+  margin-left: 10px;
+}
+
+.mxevtreportmodal .mainbody .listItem:hover {
+  background-color: rgba(0, 112, 245, 0.06);
+}
+
+.reportbox {
+  height: 46px;
+  width: 100%;
+  /* line-height: 46px; */
+  padding-left: 16px;
+  padding-top: 5px;
+  background-color: #fff;
+  color: #35344c;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.reportbox .tellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  color: #35344c;
+  font-weight: 450;
+  font-size: 18px;
+  flex: 1;
+}

@@ -1,0 +1,112 @@
+.play {
+  background-color: #fff;
+  color: #fff;
+}
+
+.diskvideo {
+  background-image: linear-gradient(180deg, #002c4e, #00010c);
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.videocover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.videoplay {
+  background: url(../../assets/play.svg) no-repeat;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+}
+
+.videotext {
+  font-family: Muli;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.videoduration {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 14px;
+}
+
+ul.diskbtns {
+  margin: 0;
+  padding: 12px 8px;
+  display: flex;
+}
+
+ul.diskbtns li {
+  display: inline-block;
+  width: 50%;
+  padding: 0 8px;
+}
+
+ul.diskbtns .btnitem {
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 3px;
+  text-align: center;
+  background-image: linear-gradient(104deg, #ff6443 -24%, #efac19 155%);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul.diskbtns .btnplay {
+  background-image: url(../../assets/play-small.svg);
+}
+
+ul.diskbtns .btntxt {
+  padding-left: 20px;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btndownload {
+  background-image: url(../../assets/download-small.svg);
+}
+
+.optiontoggle {
+  width: 110px;
+  margin: 14px auto 5px;
+  padding-right: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #7e7e7e;
+  background: url(../../assets/more-player-icon.svg) 100%/24px no-repeat;
+  cursor: pointer;
+}
+
+.optiontitle {
+  color: gray;
+  font-size: 14px;
+  padding: 0 16px;
+}
+
+.simpleplayer2 ul.diskbtns .btnitem {
+  background-image: linear-gradient(285deg, #ff6d6d, #ff2e67 0)
+}
+
+.t12 {
+  font-size: 12px;
+}

@@ -1,0 +1,15 @@
+.MdiskInfo {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.MdiskInfoads {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.t12 {
+  font-size: 12px;
+}

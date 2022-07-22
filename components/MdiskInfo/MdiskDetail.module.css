@@ -1,0 +1,23 @@
+.MdiskDetail .diskdetails {
+  padding: 4px 16px 20px;
+  color: #505a78;
+  line-height: 16px;
+}
+
+.t12 {
+  font-size: 12px;
+}
+
+.diskdetails .info-title {
+  color: #35344c;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.MdiskDetail {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
