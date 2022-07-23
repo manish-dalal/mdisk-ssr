@@ -1,0 +1,26 @@
+.appheader {
+  width: 100%;
+  background-color: #434645;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.headerlogo {
+  margin-top: 5px;
+  height: 50px;
+}
+
+.appheader .container {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.appheader a {
+  color: #fff;
+  text-decoration: none;
+}

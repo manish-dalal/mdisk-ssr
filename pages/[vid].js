@@ -8,6 +8,9 @@ import Mdisk from '../components/video/Mdisk';
 import FooterAds from '../components/FooterAds';
 import styles from '../styles/video.module.css';
 
+const thumbImage =
+  'https://drive.google.com/uc?export=view&id=1GK6SH3Kwgu-Nwr4ilQPyiKuk26tbZmxb';
+
 const Post = (props) => {
   const { video, type, videoId, hostname } = props;
 
@@ -41,14 +44,8 @@ const Post = (props) => {
           name='viewport'
           content='width=device-width, initial-scale=1, shrink-to-fit=no'
         ></meta>
-        <meta
-          name='twitter:image'
-          content='https://drive.google.com/uc?export=view&id=1GK6SH3Kwgu-Nwr4ilQPyiKuk26tbZmxb'
-        ></meta>
-        <meta
-          name='og:image'
-          content='https://drive.google.com/uc?export=view&id=1GK6SH3Kwgu-Nwr4ilQPyiKuk26tbZmxb'
-        ></meta>
+        <meta name='twitter:image' content={video.image || thumbImage}></meta>
+        <meta name='og:image' content={video.image || thumbImage}></meta>
       </Head>
       <div className={styles.adheader} style={frameWidthStyle}>
         <div
