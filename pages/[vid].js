@@ -86,7 +86,7 @@ const Post = (props) => {
 export default Post;
 export async function getServerSideProps(context) {
   const videoId = context.params.vid;
-  const type = getHost(context) === iHostname[0] ? 'd' : 'm';
+  const type = getHost(context).includes('dood') ? 'd' : 'm';
 
   const props = {
     type,
@@ -122,6 +122,6 @@ export async function getServerSideProps(context) {
     }
   }
 
-  console.log('video', props.video);
+  // console.log('video', props.video);
   return { props };
 }
