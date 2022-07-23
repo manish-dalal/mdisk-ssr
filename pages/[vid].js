@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 
 import { getHost, iHostname } from '../utils';
 import { transformMdiskGet, isIOS } from '../utils/mdisk';
@@ -31,8 +32,10 @@ const Post = (props) => {
 
   const setDimensions = (params) => setdimensions({ ...dimensions, ...params });
   React.useEffect(() => {
-    const tVideo = video && transformMdiskGet(video);
-    setvideoData(tVideo);
+    if (video) {
+      const tVideo = video && transformMdiskGet(video);
+      setvideoData(tVideo);
+    }
 
     const height =
       window.innerHeight < 780 ? window.innerHeight : window.innerHeight - 10;
@@ -46,10 +49,17 @@ const Post = (props) => {
   const frameWidthStyle = type === 'm' ? { maxWidth: 480 } : {};
   const footerStyle =
     type === 'm' ? { position: 'unset' } : { backgroundColor: '#434645' };
+  const pageTitle =
+    type === 'm' ? (videoData.id ? videoData.name : 'Mdisk') : 'Doodstream';
   return (
     <div
       className={` ${styles.videoapp} ${type === 'm' ? styles.mdiskapp : ''}`}
     >
+      <Head>
+        <title>{pageTitle}</title>
+        <meta property='og:title' content={pageTitle} key='title' />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
       <div className={styles.adheader} style={frameWidthStyle}>
         <div
           className={styles.adoverlay}
@@ -97,13 +107,17 @@ export async function getServerSideProps(context) {
     isLoading: true,
     hostname: getHost(context),
   };
-  console.log('router.query', context.params.vid);
+
   if (type === 'm') {
-    const response = await fetch(
-      `https://diskuploader.entertainvideo.com/v1/file/cdnurl?param=${videoId}`
-    );
-    props.video = await response.json();
-    props.isLoading = false;
+    try {
+      const response = await fetch(
+        `https://diskuploader.entertainvideo.com/v1/file/cdnurl?param=${videoId}`
+      );
+      props.video = await response.json();
+      props.isLoading = false;
+    } catch (error) {
+      props.isLoading = false;
+    }
   }
 
   return { props };
