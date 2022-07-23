@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 
-import { getHost, iHostname } from '../utils';
+import { getHost } from '../utils';
 import { pushToDataLayer } from '../utils/google-analytics';
 import Dood from '../components/video/Dood';
 import Mdisk from '../components/video/Mdisk';

@@ -11,7 +11,7 @@ export const useBrowserLayoutEffect = process.browser
 
 import styles from '../styles/Home.module.css';
 import { mdisk, dood } from '../components/HomeData';
-import { iHostname, getHost } from '../utils';
+import { getHost } from '../utils';
 import Header from '../components/Header';
 
 export default function Home(props) {
@@ -90,8 +90,9 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(context) {
-  const IMGS =
-    getHost(context) === iHostname[0] ? dood.messages : mdisk.messages;
+  const IMGS = getHost(context).includes('dood')
+    ? dood.messages
+    : mdisk.messages;
   return {
     props: { IMGS },
   };
