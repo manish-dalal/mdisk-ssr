@@ -7,7 +7,10 @@ import MdiskDetail from '../MdiskInfo/MdiskDetail';
 export default function Mdisk({ height, videoData }) {
   if (!videoData) {
     return (
-      <div className={styles.mdiskCp} style={{ color: 'red' }}>
+      <div
+        className={styles.mdiskCp}
+        style={{ color: 'red', minHeight: 200, padding: 10 }}
+      >
         Resource Not Found
       </div>
     );

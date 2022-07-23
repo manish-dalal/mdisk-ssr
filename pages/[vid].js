@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { getHost, iHostname } from '../utils';
+import { getHost, iHostname, isBrowser } from '../utils';
 import { transformMdiskGet, isIOS } from '../utils/mdisk';
 import { pushToDataLayer } from '../utils/google-analytics';
 import Dood from '../components/video/Dood';
@@ -11,16 +11,13 @@ import styles from '../styles/video.module.css';
 const Post = (props) => {
   console.log('props', props);
   const { video, type, videoId } = props;
-  const [videoData, setvideoData] = useState(null);
+  const videoData = isBrowser && video && transformMdiskGet(video);
+
   const [isLoading, setIsLoading] = useState(props.isLoading);
-
   const [dimensions, setdimensions] = useState({ height: 100, width: 100 });
-
   const setDimensions = (params) => setdimensions({ ...dimensions, ...params });
-  React.useEffect(() => {
-    const tVideo = video && transformMdiskGet(video);
-    setvideoData(tVideo);
 
+  React.useEffect(() => {
     const height =
       window.innerHeight < 780 ? window.innerHeight : window.innerHeight - 10;
     const epWidth =
