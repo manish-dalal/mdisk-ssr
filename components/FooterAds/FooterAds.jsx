@@ -13,17 +13,16 @@ function shuffle(array) {
   return array;
 }
 
-const getExoAdsArr = () => {
-  const hostname = isBrowser ? window.location.hostname : iHostname[1];
+const getExoAdsArr = (hostname) => {
   let exoAdsArr = exoClickAds.new[hostname];
   if (!(exoAdsArr && exoAdsArr.length)) {
-    exoAdsArr = exoClickAds.old[iHostname[1]];
+    exoAdsArr = exoClickAds.new[iHostname[1]];
   }
   return shuffle(exoAdsArr);
 };
 
-export default function MdiskInfo({ isLoading }) {
-  const exoAdsArr = getExoAdsArr();
+export default function MdiskInfo({ isLoading, hostname }) {
+  const exoAdsArr = getExoAdsArr(hostname);
   const [count, setcount] = useState(adPageSize);
   const timerRef = useRef(null);
   // const adseraId = getAdsteraNativeAd();
@@ -37,21 +36,6 @@ export default function MdiskInfo({ isLoading }) {
       jsElm1.type = 'application/javascript';
       jsElm1.src = 'https://a.exdynsrv.com/ad-provider.js';
       document.head.appendChild(jsElm1);
-
-      // Native Banner
-      // var jsElm2 = document.createElement('script');
-      // jsElm2['data-cfasync'] = false;
-      // jsElm2.async = true;
-      // jsElm2.type = 'text/javascript';
-      // jsElm2.src = `https://mineraltip.com/${adseraId}/invoke.js`;
-      // document.head.appendChild(jsElm2);
-
-      // Social Bar (like dialog)
-      // var jsElm3 = document.createElement('script');
-      // jsElm3.type = 'text/javascript';
-      // jsElm3.src =
-      //   'https://mineraltip.com/c0/ad/0a/c0ad0a9f4384a13bad50f3d0c3da2235.js';
-      // document.head.appendChild(jsElm3);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);

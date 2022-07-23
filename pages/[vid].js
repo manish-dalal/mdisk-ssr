@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { getHost, iHostname, isBrowser } from '../utils';
+import { getHost, iHostname } from '../utils';
 import { transformMdiskGet, isIOS } from '../utils/mdisk';
 import { pushToDataLayer } from '../utils/google-analytics';
 import Dood from '../components/video/Dood';
@@ -10,14 +10,31 @@ import styles from '../styles/video.module.css';
 
 const Post = (props) => {
   console.log('props', props);
-  const { video, type, videoId } = props;
-  const videoData = isBrowser && video && transformMdiskGet(video);
-
+  const { video, type, videoId, hostname } = props;
+  const [videoData, setvideoData] = useState({
+    id: '',
+    owner: '****',
+    name: '',
+    fromUser: '',
+    duration: 0,
+    poster: '',
+    isDeeplink: false,
+    useOnlinePlayer: false,
+    useOnlineDownloader: false,
+    size: 0,
+    width: 848,
+    height: 480,
+    publishTime: 0,
+  });
   const [isLoading, setIsLoading] = useState(props.isLoading);
-  const [dimensions, setdimensions] = useState({ height: 100, width: 100 });
-  const setDimensions = (params) => setdimensions({ ...dimensions, ...params });
 
+  const [dimensions, setdimensions] = useState({ height: 100, width: 100 });
+
+  const setDimensions = (params) => setdimensions({ ...dimensions, ...params });
   React.useEffect(() => {
+    const tVideo = video && transformMdiskGet(video);
+    setvideoData(tVideo);
+
     const height =
       window.innerHeight < 780 ? window.innerHeight : window.innerHeight - 10;
     const epWidth =
@@ -64,7 +81,7 @@ const Post = (props) => {
         />
       </div>
       <div className={styles.adfooter} style={footerStyle}>
-        <FooterAds isLoading={isLoading} />
+        <FooterAds isLoading={isLoading} hostname={hostname} />
       </div>
     </div>
   );
@@ -75,7 +92,13 @@ export async function getServerSideProps(context) {
   const videoId = context.params.vid;
   const type = getHost(context) === iHostname[0] ? 'd' : 'm';
 
-  const props = { type, videoId, video: null, isLoading: true };
+  const props = {
+    type,
+    videoId,
+    video: null,
+    isLoading: true,
+    hostname: getHost(context),
+  };
   console.log('router.query', context.params.vid);
   if (type === 'm') {
     const response = await fetch(
