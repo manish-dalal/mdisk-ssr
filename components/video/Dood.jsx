@@ -10,7 +10,7 @@ export default function Dood({ videoId, height, width, onLoad, video }) {
   return (
     <div className='dood'>
       <Script
-        src='https://kit.fontawesome.com/a076d05399.js'
+        src='https://res.cloudinary.com/mdiskapp/raw/upload/v1658599010/fontawesome_fdryvd.js'
         crossOrigin='anonymous'
       ></Script>
       <iframe
