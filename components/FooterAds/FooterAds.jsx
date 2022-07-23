@@ -14,10 +14,11 @@ function shuffle(array) {
 }
 
 const getExoAdsArr = (hostname) => {
-  let exoAdsArr = exoClickAds.new[hostname];
-  if (!(exoAdsArr && exoAdsArr.length)) {
-    exoAdsArr = exoClickAds.new[iHostname[1]];
-  }
+  const finalHost = hostname.includes('dood') ? iHostname[0] : iHostname[1];
+  let exoAdsArr = exoClickAds.new[finalHost];
+  // if (!(exoAdsArr && exoAdsArr.length)) {
+  //   exoAdsArr = exoClickAds.new[iHostname[1]];
+  // }
   return shuffle(exoAdsArr);
 };
 

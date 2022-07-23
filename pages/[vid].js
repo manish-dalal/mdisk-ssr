@@ -16,7 +16,7 @@ const Post = (props) => {
 
   const [isLoading, setIsLoading] = useState(props.isLoading);
 
-  const [dimensions, setdimensions] = useState({ height: 100, width: 320 });
+  const [dimensions, setdimensions] = useState({ height: 100, width: 520 });
 
   const setDimensions = (params) => setdimensions({ ...dimensions, ...params });
   React.useEffect(() => {
@@ -44,8 +44,8 @@ const Post = (props) => {
           name='viewport'
           content='width=device-width, initial-scale=1, shrink-to-fit=no'
         ></meta>
-        <meta name='twitter:image' content={video.image || thumbImage}></meta>
-        <meta name='og:image' content={video.image || thumbImage}></meta>
+        <meta name='twitter:image' content={video?.image || thumbImage}></meta>
+        <meta name='og:image' content={video?.image || thumbImage}></meta>
       </Head>
       <div className={styles.adheader} style={frameWidthStyle}>
         <div
