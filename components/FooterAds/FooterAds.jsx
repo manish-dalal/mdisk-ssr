@@ -3,11 +3,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { getMobileOS } from '../../utils/get-mobile-os';
 import { ads as exoClickAds } from './exoClickAds';
 import styles from './FooterAds.module.css';
-import { iHostname } from '../../utils';
+import { iHostname, isBrowser } from '../../utils';
 
 const adPageSize = 6;
 const loadCount = getMobileOS() === 'Android' ? 1000 : 6;
-const isBrowser = typeof window !== 'undefined';
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
@@ -16,7 +15,7 @@ function shuffle(array) {
 
 const getExoAdsArr = () => {
   const hostname = isBrowser ? window.location.hostname : iHostname[1];
-  let exoAdsArr = exoClickAds.old[hostname];
+  let exoAdsArr = exoClickAds.new[hostname];
   if (!(exoAdsArr && exoAdsArr.length)) {
     exoAdsArr = exoClickAds.old[iHostname[1]];
   }
@@ -83,7 +82,7 @@ export default function MdiskInfo({ isLoading }) {
         <div className={styles.MdiskInfoads}>
           {paginateArr.map((el, index) => (
             <ins
-              className={styles.adsbyexoclick}
+              className='adsbyexoclick'
               data-zoneid={el}
               key={`ad-${el}`}
             ></ins>
