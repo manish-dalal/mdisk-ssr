@@ -28,7 +28,7 @@ const Post = (props) => {
   });
   const [isLoading, setIsLoading] = useState(props.isLoading);
 
-  const [dimensions, setdimensions] = useState({ height: 100, width: 100 });
+  const [dimensions, setdimensions] = useState({ height: 100, width: 480 });
 
   const setDimensions = (params) => setdimensions({ ...dimensions, ...params });
   React.useEffect(() => {
