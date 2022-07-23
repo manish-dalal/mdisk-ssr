@@ -14,7 +14,7 @@ const Post = (props) => {
   const [videoData, setvideoData] = useState({
     id: '',
     owner: '****',
-    name: '',
+    name: video.filename,
     fromUser: '',
     duration: 0,
     poster: '',
@@ -49,8 +49,7 @@ const Post = (props) => {
   const frameWidthStyle = type === 'm' ? { maxWidth: 480 } : {};
   const footerStyle =
     type === 'm' ? { position: 'unset' } : { backgroundColor: '#434645' };
-  const pageTitle =
-    type === 'm' ? (videoData.id ? videoData.name : 'Mdisk') : 'Doodstream';
+  const pageTitle = type === 'm' ? videoData.name || 'Mdisk' : 'Doodstream';
   return (
     <div
       className={` ${styles.videoapp} ${type === 'm' ? styles.mdiskapp : ''}`}
@@ -120,5 +119,6 @@ export async function getServerSideProps(context) {
     }
   }
 
+  console.log('video', props.video);
   return { props };
 }
