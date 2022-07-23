@@ -56,11 +56,19 @@ const Post = (props) => {
     >
       <Head>
         <title>{pageTitle}</title>
-        <meta property='og:title' content={pageTitle} key='title' />
+        <meta property='og:title' content={pageTitle} key='title'></meta>
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, shrink-to-fit=no'
+        ></meta>
+        <meta
+          name='twitter:image'
+          content='https://drive.google.com/uc?export=view&id=1GK6SH3Kwgu-Nwr4ilQPyiKuk26tbZmxb'
+        ></meta>
         <meta
           name='og:image'
           content='https://drive.google.com/uc?export=view&id=1GK6SH3Kwgu-Nwr4ilQPyiKuk26tbZmxb'
-        />
+        ></meta>
       </Head>
       <div className={styles.adheader} style={frameWidthStyle}>
         <div
