@@ -16,7 +16,8 @@ a {
 }
 
 body,
-#__next {
+#__next,
+.dood {
   background-color: #434645;
   min-height: 100vh;
   display: flex;
@@ -27,4 +28,8 @@ body,
   width: 100%;
   color: white;
   position: relative;
+}
+
+.dood {
+  min-height: calc(100vh - 110px);
 }

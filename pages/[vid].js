@@ -9,7 +9,6 @@ import FooterAds from '../components/FooterAds';
 import styles from '../styles/video.module.css';
 
 const Post = (props) => {
-  console.log('props', props);
   const { video, type, videoId, hostname } = props;
   const [videoData, setvideoData] = useState({
     id: '',
@@ -44,14 +43,22 @@ const Post = (props) => {
     setDimensions({ width, height: Math.min(height, width), epWidth });
   }, []);
 
-  const frameWidthStyle =
-    type === 'm' ? { width: Math.min(480, dimensions.width) } : {};
+  const frameWidthStyle = type === 'm' ? { maxWidth: 480 } : {};
   const footerStyle =
     type === 'm' ? { position: 'unset' } : { backgroundColor: '#434645' };
   return (
     <div
       className={` ${styles.videoapp} ${type === 'm' ? styles.mdiskapp : ''}`}
     >
+      <div className={styles.adheader} style={frameWidthStyle}>
+        <div
+          className={styles.adoverlay}
+          onClick={() => {
+            window.open('https://t.me/primexmov', '_blank');
+            pushToDataLayer({ event: 'click_header', id: videoId || '' });
+          }}
+        />
+      </div>
       {type === 'd' ? (
         <Dood
           height={dimensions.height}
@@ -71,15 +78,6 @@ const Post = (props) => {
           videoData={videoData}
         />
       )}
-      <div className={styles.adheader} style={frameWidthStyle}>
-        <div
-          className={styles.adoverlay}
-          onClick={() => {
-            window.open('https://t.me/primexmov', '_blank');
-            pushToDataLayer({ event: 'click_header', id: videoId || '' });
-          }}
-        />
-      </div>
       <div className={styles.adfooter} style={footerStyle}>
         <FooterAds isLoading={isLoading} hostname={hostname} />
       </div>
