@@ -1,11 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './mdisk.module.css';
 import Report from '../Report';
 import Play from '../MdiskInfo/Play';
 import MdiskDetail from '../MdiskInfo/MdiskDetail';
+import { transformMdiskGet, isIOS } from '../../utils/mdisk';
 
-export default function Mdisk({ height, videoData }) {
-  if (!videoData.id) {
+export default function Mdisk({ height, video }) {
+  const [videoData, setvideoData] = useState({
+    id: '',
+    owner: '****',
+    name: video?.filename,
+    fromUser: '',
+    duration: 0,
+    poster: '',
+    isDeeplink: false,
+    useOnlinePlayer: false,
+    useOnlineDownloader: false,
+    size: 0,
+    width: 848,
+    height: 480,
+    publishTime: 0,
+  });
+  React.useEffect(() => {
+    if (video) {
+      const tVideo = transformMdiskGet(video);
+      setvideoData(tVideo);
+    }
+  }, []);
+
+  if (!videoData.name) {
     return (
       <div
         className={styles.mdiskCp}

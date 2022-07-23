@@ -2,19 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 import styles from './MdiskDetail.module.css';
-
-const videoSize = (sizeArg) => {
-  let size = null;
-  let s = sizeArg;
-  let map = ['B', 'KB', 'M', 'G'];
-  let count = 0;
-  while (s > 1024) {
-    s /= 1024;
-    count++;
-  }
-  size = s.toFixed(1) + map[count];
-  return size;
-};
+import { videoSize } from '../../utils';
 
 export default function MdiskInfo({ videoData }) {
   const {

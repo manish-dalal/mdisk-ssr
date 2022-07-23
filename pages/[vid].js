@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 
 import { getHost, iHostname } from '../utils';
-import { transformMdiskGet, isIOS } from '../utils/mdisk';
 import { pushToDataLayer } from '../utils/google-analytics';
 import Dood from '../components/video/Dood';
 import Mdisk from '../components/video/Mdisk';
@@ -11,32 +10,13 @@ import styles from '../styles/video.module.css';
 
 const Post = (props) => {
   const { video, type, videoId, hostname } = props;
-  const [videoData, setvideoData] = useState({
-    id: '',
-    owner: '****',
-    name: video.filename,
-    fromUser: '',
-    duration: 0,
-    poster: '',
-    isDeeplink: false,
-    useOnlinePlayer: false,
-    useOnlineDownloader: false,
-    size: 0,
-    width: 848,
-    height: 480,
-    publishTime: 0,
-  });
+
   const [isLoading, setIsLoading] = useState(props.isLoading);
 
   const [dimensions, setdimensions] = useState({ height: 100, width: 320 });
 
   const setDimensions = (params) => setdimensions({ ...dimensions, ...params });
   React.useEffect(() => {
-    if (video) {
-      const tVideo = video && transformMdiskGet(video);
-      setvideoData(tVideo);
-    }
-
     const height =
       window.innerHeight < 780 ? window.innerHeight : window.innerHeight - 10;
     const epWidth =
@@ -49,7 +29,7 @@ const Post = (props) => {
   const frameWidthStyle = type === 'm' ? { maxWidth: 480 } : {};
   const footerStyle =
     type === 'm' ? { position: 'unset' } : { backgroundColor: '#434645' };
-  const pageTitle = type === 'm' ? videoData.name || 'Mdisk' : 'Doodstream';
+  const pageTitle = video?.filename || (type === 'm' ? 'Mdisk' : 'Doodstream');
   return (
     <div
       className={` ${styles.videoapp} ${type === 'm' ? styles.mdiskapp : ''}`}
@@ -88,6 +68,7 @@ const Post = (props) => {
             // setisClickedIframe(true);
           }}
           onLoad={() => setIsLoading(false)}
+          video={video}
         />
       ) : (
         <Mdisk
@@ -95,7 +76,7 @@ const Post = (props) => {
           onClick={() => {
             // setisClickedIframe(true);
           }}
-          videoData={videoData}
+          video={video}
         />
       )}
       <div className={styles.adfooter} style={footerStyle}>
@@ -127,6 +108,20 @@ export async function getServerSideProps(context) {
       props.isLoading = false;
     } catch (error) {
       props.isLoading = false;
+      console.log('Mdisk error', error);
+    }
+  } else {
+    try {
+      const response = await fetch(
+        `https://doodapi.com/api/file/info?key=72288nzohhhv0hp933n07&file_code=${videoId}`
+      );
+      const { result } = await response.json();
+      if (result && result.length) {
+        const { single_img = '', title = '' } = result[0];
+        props.video = { image: single_img, filename: title, ...result[0] };
+      }
+    } catch (error) {
+      console.log('Dood error', error);
     }
   }
 

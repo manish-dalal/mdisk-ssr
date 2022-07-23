@@ -1,0 +1,53 @@
+.titlewrap {
+  padding: 15px 30px;
+  border-top: 1px solid #1c1c1c;
+  position: relative;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background: #1c1c1c;
+  font-size: 16px;
+}
+
+.titlewrap h4 {
+  font-size: 1.2857142857142858rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0px 0px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.videoDetail {
+  display: flex;
+  align-items: center;
+}
+
+.length,
+.size,
+.uploadate {
+  margin-right: 15px;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+.length i,
+.size i,
+.uploadate i {
+  margin-right: 4px;
+}
+
+@media (max-width: 480px) {
+  .titlewrap {
+    padding: 15px;
+  }
+
+  .titlewrap h4 {
+    font-size: 1rem;
+    white-space: normal;
+    overflow: initial;
+    text-overflow: initial;
+  }
+
+}
