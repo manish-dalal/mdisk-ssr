@@ -27,6 +27,7 @@ const Post = (props) => {
     const width =
       epWidth >= height ? epWidth - (epWidth - height) / 3 : epWidth;
     setDimensions({ width, height: Math.min(height, width), epWidth });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const frameWidthStyle = type === 'm' ? { maxWidth: 480 } : {};

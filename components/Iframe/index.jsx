@@ -8,6 +8,7 @@ const IframeRender = (props) => {
   const setDimensions = (params) => setdimensions({ ...dimensions, ...params });
   React.useEffect(() => {
     setDimensions({ width: window.innerWidth, height: window.innerHeight });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

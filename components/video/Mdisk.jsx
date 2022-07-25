@@ -26,6 +26,7 @@ export default function Mdisk({ height, video }) {
       const tVideo = transformMdiskGet(video);
       setvideoData(tVideo);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!videoData.name) {
