@@ -46,6 +46,13 @@ const Post = (props) => {
         ></meta>
         <meta name='twitter:image' content={video?.image || thumbImage}></meta>
         <meta name='og:image' content={video?.image || thumbImage}></meta>
+        <meta name='description' content='Watch latest videos'></meta>
+        <link
+          rel='preload'
+          as='image'
+          href='https://res.cloudinary.com/ddvaiwvwr/image/upload/v1647776300/fdisk.in/header_jkdzin_dmmgxz.webp'
+        ></link>
+        <link rel='dns-prefetch' href='https://res.cloudinary.com'></link>
       </Head>
       <div className={styles.adheader} style={frameWidthStyle}>
         <div
