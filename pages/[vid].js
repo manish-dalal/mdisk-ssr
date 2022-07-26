@@ -7,12 +7,14 @@ import Dood from '../components/video/Dood';
 import Mdisk from '../components/video/Mdisk';
 import FooterAds from '../components/FooterAds';
 import styles from '../styles/video.module.css';
+import Loading from '../components/Loading';
 
 const thumbImage =
   'https://drive.google.com/uc?export=view&id=1GK6SH3Kwgu-Nwr4ilQPyiKuk26tbZmxb';
 
 const Post = (props) => {
   const { video, type, videoId, hostname } = props;
+  const [appLoading, setAppLoading] = useState(true);
 
   const [isLoading, setIsLoading] = useState(props.isLoading);
 
@@ -27,6 +29,7 @@ const Post = (props) => {
     const width =
       epWidth >= height ? epWidth - (epWidth - height) / 3 : epWidth;
     setDimensions({ width, height: Math.min(height, width), epWidth });
+    setAppLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -87,6 +90,7 @@ const Post = (props) => {
       <div className={styles.adfooter} style={footerStyle}>
         <FooterAds isLoading={isLoading} hostname={hostname} />
       </div>
+      {appLoading && <Loading />}
     </div>
   );
 };
