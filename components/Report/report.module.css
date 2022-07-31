@@ -114,6 +114,7 @@
 .reportbox .tellipsis {
   overflow: hidden;
   flex: 1;
+  padding-right: 9px;
 }
 
 .reportbox .tscroll {
