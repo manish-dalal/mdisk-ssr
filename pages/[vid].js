@@ -96,8 +96,16 @@ const Post = (props) => {
 };
 
 export default Post;
+const updateRemovedLinks = async ({ text, linktype }) => {
+  fetch('https://diskuploader.glitch.me/api/link/add', {
+    method: 'POST',
+    body: JSON.stringify({ text, linktype }),
+  });
+};
 export async function getServerSideProps(context) {
   const videoId = context.params.vid;
+  const vRegex = /^([a-zA-Z0-9]){5,35}$/;
+  const isValidVideoId = vRegex.test(videoId);
   const type = getHost(context).includes('dood') ? 'd' : 'm';
 
   const props = {
@@ -108,7 +116,7 @@ export async function getServerSideProps(context) {
     hostname: getHost(context),
   };
 
-  if (type === 'm') {
+  if (isValidVideoId && type === 'm') {
     try {
       const response = await fetch(
         `https://diskuploader.entertainvideo.com/v1/file/cdnurl?param=${videoId}`
@@ -118,8 +126,9 @@ export async function getServerSideProps(context) {
     } catch (error) {
       props.isLoading = false;
       console.log('Mdisk error', error);
+      updateRemovedLinks({ text: videoId, linktype: 'mdisk' });
     }
-  } else {
+  } else if (isValidVideoId) {
     try {
       const response = await fetch(
         `https://doodapi.com/api/file/info?key=72288nzohhhv0hp933n07&file_code=${videoId}`
@@ -131,6 +140,7 @@ export async function getServerSideProps(context) {
       }
     } catch (error) {
       console.log('Dood error', error);
+      updateRemovedLinks({ text: videoId, linktype: 'dood' });
     }
   }
 
