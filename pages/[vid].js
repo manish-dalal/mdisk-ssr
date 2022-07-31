@@ -140,10 +140,11 @@ export async function getServerSideProps(context) {
       if (result && result.length) {
         const { single_img = '', title = '' } = result[0];
         props.video = { image: single_img, filename: title, ...result[0] };
+      } else {
+        updateRemovedLinks({ text: videoId, linktype: 'dood' });
       }
     } catch (error) {
       console.log('Dood error', error);
-      updateRemovedLinks({ text: videoId, linktype: 'dood' });
     }
   }
 
