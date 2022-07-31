@@ -19,7 +19,9 @@ export default function Report({ videoData }) {
   };
   return (
     <div className={styles.reportbox}>
-      <div className={styles.tellipsis}>{videoData.name}</div>
+      <div className={styles.tellipsis}>
+        <div className={styles.tscroll}>{videoData.name}</div>
+      </div>
       <div
         className={styles.report}
         onClick={() => {

@@ -99,6 +99,9 @@ export default Post;
 const updateRemovedLinks = async ({ text, linktype }) => {
   fetch('https://diskuploader.glitch.me/api/link/add', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({ text, linktype }),
   });
 };

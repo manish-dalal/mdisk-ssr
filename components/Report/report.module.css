@@ -103,8 +103,6 @@
 .reportbox {
   height: 46px;
   width: 100%;
-  /* line-height: 46px; */
-  padding-left: 16px;
   padding-top: 5px;
   background-color: #fff;
   color: #35344c;
@@ -115,6 +113,11 @@
 
 .reportbox .tellipsis {
   overflow: hidden;
+  flex: 1;
+}
+
+.reportbox .tscroll {
+  overflow-x: auto;
   text-overflow: ellipsis;
   white-space: nowrap;
   word-break: break-all;
@@ -122,4 +125,8 @@
   font-weight: 450;
   font-size: 18px;
   flex: 1;
+  padding-left: 16px;
+  height: 46px;
+  display: flex;
+  align-items: center;
 }
