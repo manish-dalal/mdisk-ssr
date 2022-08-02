@@ -101,6 +101,7 @@ export const transformMdiskGet = (data) => {
     width: data.width || 0,
     height: data.height || 0,
     publishTime: data.ts || 0,
+    ad_action: data.ad_action || 0,
   };
   return video;
 };
@@ -116,7 +117,17 @@ function trackInfo(video) {
   };
   return encodeURIComponent(JSON.stringify(info));
 }
-
+function trackInfoSP(video) {
+  let info = {
+    fromuser: video.fromUser,
+    video: video.id,
+    source: video.userSrc,
+    duration: video.duration,
+    domain: video.playDomain,
+    ad_action: video.ad_action,
+  };
+  return encodeURIComponent(JSON.stringify(info));
+}
 function mxGooglePlayUrl() {
   return 'intent:market://details?id=com.mxtech.videoplayer.ad&referrer=utm_source%3Dtelegram_bot%26utm_medium%3Dweb%26utm_campaign%3Dtelegram_bot#Intent;action=android.intent.action.VIEW;category=android.intent.category.DEFAULT;category=android.intent.category.BROWSABLE;package=com.android.vending;end';
 }
@@ -225,7 +236,7 @@ export function onSimplePlay(clickEvent, videoData) {
   videoData.id && arr.push(`S.id=${videoData.id};`);
   videoData.name && arr.push(`S.title=${encodeURIComponent(videoData.name)};`);
   videoData.size && arr.push(`l.total_size=${videoData.size};`);
-  videoData.fromUser && arr.push(`S.tr_parameter=${trackInfo(videoData)};`);
+  videoData.fromUser && arr.push(`S.tr_parameter=${trackInfoSP(videoData)};`);
 
   arr.push('end');
   let url = arr.join('');
