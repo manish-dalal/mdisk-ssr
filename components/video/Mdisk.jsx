@@ -5,7 +5,7 @@ import Play from '../MdiskInfo/Play';
 import MdiskDetail from '../MdiskInfo/MdiskDetail';
 import { transformMdiskGet, isIOS } from '../../utils/mdisk';
 
-export default function Mdisk({ height, video }) {
+export default function Mdisk({ height, video, videoId }) {
   const [videoData, setvideoData] = useState({
     id: '',
     owner: '****',
@@ -20,10 +20,11 @@ export default function Mdisk({ height, video }) {
     width: 848,
     height: 480,
     publishTime: 0,
+    videoId
   });
   React.useEffect(() => {
     if (video) {
-      const tVideo = transformMdiskGet(video);
+      const tVideo = transformMdiskGet(video, videoId);
       setvideoData(tVideo);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

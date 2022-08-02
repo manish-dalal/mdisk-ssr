@@ -85,6 +85,7 @@ const Post = (props) => {
             // setisClickedIframe(true);
           }}
           video={video}
+          videoId={videoId}
         />
       )}
       <div className={styles.adfooter} style={footerStyle}>

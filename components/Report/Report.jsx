@@ -12,7 +12,7 @@ export default function Report({ videoData }) {
     if (reason && typeof reason === 'string') {
       pushToDataLayer({
         event: 'video_report',
-        // id: videoId || '',
+        id: videoData.videoId || '',
         reason,
       });
     }

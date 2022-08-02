@@ -42,7 +42,7 @@ function isDeeplinkUrl(link) {
   return url.protocol.startsWith('mxplay');
 }
 
-export const transformMdiskGet = (data) => {
+export const transformMdiskGet = (data, videoId) => {
   let streamingUrl = data.source;
   let downloadUrl = data.download;
   let playUrl = downloadUrl;
@@ -102,6 +102,7 @@ export const transformMdiskGet = (data) => {
     height: data.height || 0,
     publishTime: data.ts || 0,
     ad_action: data.ad_action || 0,
+    videoId,
   };
   return video;
 };
@@ -169,7 +170,7 @@ function openApp(href, googlePlayUrl) {
 }
 
 export function onPlay(clickEvent, videoData) {
-  pushToDataLayer({ event: 'play_1', id: videoData.id });
+  pushToDataLayer({ event: 'play_1', id: videoData.videoId });
 
   if (isIOS) {
     let playUrl = `splayer://playback?url=${videoData.src}&action=playback`;
@@ -225,7 +226,7 @@ export function convertToMMSS(seconds = 0) {
 }
 
 export function onSimplePlay(clickEvent, videoData) {
-  pushToDataLayer({ event: 'play_2', id: videoData.id });
+  pushToDataLayer({ event: 'play_2', id: videoData.videoId });
   let intent = `intent:${videoData.src}#Intent;action=com.young.simple.player.playback_online;package=com.young.simple.player;`;
 
   let arr = [intent];
@@ -244,7 +245,7 @@ export function onSimplePlay(clickEvent, videoData) {
 }
 
 export function onDownload(videoData) {
-  pushToDataLayer({ event: 'download_1', id: videoData.id });
+  pushToDataLayer({ event: 'download_1', id: videoData.videoId });
 
   if (isIOS) {
     let downloadUrl = `splayer://playback?url=${videoData.downloadUrl}&action=download`;
@@ -283,7 +284,7 @@ export function onSimpleDownload(videoData) {
   // if (!this.downloadable) {
   //   return;
   // }
-  pushToDataLayer({ event: 'download_2', id: videoData.id });
+  pushToDataLayer({ event: 'download_2', id: videoData.videoId });
 
   let intent = `intent:${videoData.downloadUrl}#Intent;action=com.young.simple.player.download;category=android.intent.category.DEFAULT;category=android.intent.category.BROWSABLE;package=com.young.simple.player;`;
   let arr = [intent];
