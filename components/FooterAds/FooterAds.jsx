@@ -15,7 +15,7 @@ function shuffle(array) {
 
 const getExoAdsArr = (hostname) => {
   const finalHost = hostname.includes('dood') ? iHostname[0] : iHostname[1];
-  let exoAdsArr = exoClickAds.new[finalHost];
+  let exoAdsArr = exoClickAds.old[finalHost];
   // if (!(exoAdsArr && exoAdsArr.length)) {
   //   exoAdsArr = exoClickAds.new[iHostname[1]];
   // }
