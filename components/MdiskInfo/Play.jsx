@@ -37,7 +37,9 @@ export default function Play({ videoData }) {
         }}
         onClick={() =>
           handleWaitFunction((dataObj) =>
-            onPlay('playButtonClickedSp', dataObj || videoData)
+            videoData.useSimplePlayerOnly
+              ? onSimplePlay('splayonlineClickedSp', dataObj || videoData)
+              : onPlay('playButtonClickedSp', dataObj || videoData)
           )
         }
       >
@@ -51,38 +53,45 @@ export default function Play({ videoData }) {
           {convertToMMSS(videoData ? videoData.duration : 0)}
         </div>
       </div>
-      <ul className={styles.diskbtns}>
-        <li>
-          <div
-            className={`${styles.btnitem} ${styles.twhite} ${styles.t12}`}
-            onClick={() =>
-              handleWaitFunction((dataObj) => onDownload(dataObj || videoData))
-            }
-          >
-            <span className={`${styles.btntxt} ${styles.btndownload}`}>
-              Download Video
-            </span>
-          </div>
-        </li>
-        <li>
-          <div
-            className={`${styles.btnitem} ${styles.twhite} ${styles.t12}`}
-            onClick={() =>
-              handleWaitFunction((dataObj) =>
-                onPlay('playonlineClickedSp', dataObj || videoData)
-              )
-            }
-          >
-            <span className={`${styles.btntxt} ${styles.btnplay}`}>
-              Play Online
-            </span>
-          </div>
-        </li>
-      </ul>
+      {!videoData.useSimplePlayerOnly && (
+        <ul className={styles.diskbtns}>
+          <li>
+            <div
+              className={`${styles.btnitem} ${styles.twhite} ${styles.t12}`}
+              onClick={() =>
+                handleWaitFunction((dataObj) =>
+                  onDownload(dataObj || videoData)
+                )
+              }
+            >
+              <span className={`${styles.btntxt} ${styles.btndownload}`}>
+                Download Video
+              </span>
+            </div>
+          </li>
+          <li>
+            <div
+              className={`${styles.btnitem} ${styles.twhite} ${styles.t12}`}
+              onClick={() =>
+                handleWaitFunction((dataObj) =>
+                  onPlay('playonlineClickedSp', dataObj || videoData)
+                )
+              }
+            >
+              <span className={`${styles.btntxt} ${styles.btnplay}`}>
+                Play Online
+              </span>
+            </div>
+          </li>
+        </ul>
+      )}
       {/* {showOtherOptions && ( */}
       {!videoData?.isDeeplink && (
         <div className={styles.simpleplayer2}>
-          <div className={styles.optiontitle}>{`Option2 (SPlayer)`}</div>
+          <div className={styles.optiontitle}>
+            {!videoData.useSimplePlayerOnly ? `Option2 (SPlayer)` : ''}
+          </div>
+
           <ul className={styles.diskbtns}>
             <li>
               <div

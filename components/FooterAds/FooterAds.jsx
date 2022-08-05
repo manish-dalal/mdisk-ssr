@@ -5,6 +5,7 @@ import { ads as exoClickAds } from './exoClickAds';
 import styles from './FooterAds.module.css';
 import { iHostname, isBrowser } from '../../utils';
 
+const adsType = process.env.ADS_TYPE || 'new';
 const adPageSize = 6;
 const loadCount = getMobileOS() === 'Android' ? 1000 : 6;
 
@@ -15,7 +16,7 @@ function shuffle(array) {
 
 const getExoAdsArr = (hostname) => {
   const finalHost = hostname.includes('dood') ? iHostname[0] : iHostname[1];
-  let exoAdsArr = exoClickAds.old[finalHost];
+  let exoAdsArr = exoClickAds[adsType][finalHost];
   // if (!(exoAdsArr && exoAdsArr.length)) {
   //   exoAdsArr = exoClickAds.new[iHostname[1]];
   // }
