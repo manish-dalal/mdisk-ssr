@@ -103,7 +103,7 @@ export const transformMdiskGet = (data, videoId) => {
     publishTime: data.ts || 0,
     ad_action: data.ad_action || 0,
     videoId,
-    useSimplePlayerOnly: parseInt(data.duration || 0) < 2 * 60,
+    useSimplePlayerOnly: false && parseInt(data.duration || 0) < 2 * 60,
   };
   return video;
 };
