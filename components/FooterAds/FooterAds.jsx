@@ -3,7 +3,7 @@ import styles from './FooterAds.module.css';
 import { getMobileOS } from '../../utils/get-mobile-os';
 
 let adPageSize = getMobileOS() === 'Android' ? 10 : 1;
-let loadCount = getMobileOS() === 'Android' ? 40 : 1;
+let loadCount = getMobileOS() === 'Android' ? 20 : 1;
 
 export default function MdiskInfo({ isLoading, exoAdsArr }) {
   const [count, setcount] = useState(adPageSize);
