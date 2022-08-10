@@ -1,30 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-
-import { getMobileOS } from '../../utils/get-mobile-os';
-import { ads as exoClickAds } from './exoClickAds';
 import styles from './FooterAds.module.css';
-import { iHostname, isBrowser } from '../../utils';
+import { getMobileOS } from '../../utils/get-mobile-os';
 
-const adsType = process.env.ADS_TYPE || 'new';
-const adPageSize = 1;
-const loadCount = getMobileOS() === 'Android' ? 1000 : 1;
+let adPageSize = getMobileOS() === 'Android' ? 10 : 1;
+let loadCount = getMobileOS() === 'Android' ? 1000 : 1;
 
-function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
-  return array;
-}
-
-const getExoAdsArr = (hostname) => {
-  const finalHost = hostname.includes('dood') ? iHostname[0] : iHostname[1];
-  let exoAdsArr = exoClickAds[adsType][finalHost];
-  // if (!(exoAdsArr && exoAdsArr.length)) {
-  //   exoAdsArr = exoClickAds.new[iHostname[1]];
-  // }
-  return shuffle(exoAdsArr);
-};
-
-export default function MdiskInfo({ isLoading, hostname }) {
-  const exoAdsArr = getExoAdsArr(hostname);
+export default function MdiskInfo({ isLoading, exoAdsArr }) {
   const [count, setcount] = useState(adPageSize);
   const timerRef = useRef(null);
   // const adseraId = getAdsteraNativeAd();
@@ -43,6 +24,18 @@ export default function MdiskInfo({ isLoading, hostname }) {
   }, [isLoading]);
 
   useEffect(() => {
+    if (
+      !(
+        Intl.DateTimeFormat().resolvedOptions().timeZone &&
+        Intl.DateTimeFormat()
+          .resolvedOptions()
+          .timeZone.toLowerCase()
+          .includes('asia')
+      )
+    ) {
+      loadCount = 1;
+      adPageSize = 1;
+    }
     if (!isLoading && loadCount > count) {
       timerRef.current = setTimeout(() => {
         const nextCount = count + adPageSize;

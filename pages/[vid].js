@@ -8,12 +8,13 @@ import Mdisk from '../components/video/Mdisk';
 import FooterAds from '../components/FooterAds';
 import styles from '../styles/video.module.css';
 import Loading from '../components/Loading';
+import { getExoAdsArr } from '../components/FooterAds';
 
 const thumbImage =
   'https://drive.google.com/uc?export=view&id=1GK6SH3Kwgu-Nwr4ilQPyiKuk26tbZmxb';
 
 const Post = (props) => {
-  const { video, type, videoId, hostname } = props;
+  const { video, type, videoId, exoAdsArr } = props;
   const [appLoading, setAppLoading] = useState(true);
 
   const [isLoading, setIsLoading] = useState(props.isLoading);
@@ -89,7 +90,7 @@ const Post = (props) => {
         />
       )}
       <div className={styles.adfooter} style={footerStyle}>
-        <FooterAds isLoading={isLoading} hostname={hostname} />
+        <FooterAds isLoading={isLoading} exoAdsArr={exoAdsArr} />
       </div>
       {appLoading && <Loading />}
     </div>
@@ -118,6 +119,7 @@ export async function getServerSideProps(context) {
     video: null,
     isLoading: true,
     hostname: getHost(context),
+    exoAdsArr: getExoAdsArr(getHost(context)),
   };
 
   if (isValidVideoId && type === 'm') {
