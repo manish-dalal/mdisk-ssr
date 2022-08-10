@@ -6,8 +6,8 @@ import styles from './FooterAds.module.css';
 import { iHostname, isBrowser } from '../../utils';
 
 const adsType = process.env.ADS_TYPE || 'new';
-const adPageSize = 6;
-const loadCount = getMobileOS() === 'Android' ? 1000 : 6;
+const adPageSize = 1;
+const loadCount = getMobileOS() === 'Android' ? 1000 : 1;
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
