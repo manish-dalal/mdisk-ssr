@@ -24,6 +24,17 @@ export default function MdiskInfo({ isLoading, exoAdsArr }) {
   }, [isLoading]);
 
   useEffect(() => {
+    console.log(
+      'timezone @@@@@',
+      Intl.DateTimeFormat().resolvedOptions().timeZone
+    );
+    console.log(
+      'Value @@@@@@',
+      Intl.DateTimeFormat()
+        .resolvedOptions()
+        .timeZone.toLowerCase()
+        .includes('asia')
+    );
     if (
       !(
         Intl.DateTimeFormat().resolvedOptions().timeZone &&
@@ -37,6 +48,8 @@ export default function MdiskInfo({ isLoading, exoAdsArr }) {
       adPageSize = 1;
     }
     if (!isLoading && loadCount > count) {
+      console.log('adPageSize', adPageSize);
+      console.log('loadCount', loadCount);
       timerRef.current = setTimeout(() => {
         const nextCount = count + adPageSize;
         if (count < exoAdsArr.length) {
