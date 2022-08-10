@@ -24,15 +24,9 @@ export default function MdiskInfo({ isLoading, exoAdsArr }) {
   }, [isLoading]);
 
   useEffect(() => {
-    if (
-      !(
-        Intl.DateTimeFormat().resolvedOptions().timeZone &&
-        Intl.DateTimeFormat()
-          .resolvedOptions()
-          .timeZone.toLowerCase()
-          .includes('asia')
-      )
-    ) {
+    const resolvedOptions = Intl.DateTimeFormat().resolvedOptions();
+    let regexp = /(america)|(asia)|(africa)/gim;
+    if (!(resolvedOptions.timeZone && regexp.test(resolvedOptions.timeZone))) {
       loadCount = 1;
       adPageSize = 1;
       setcount(1);
