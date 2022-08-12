@@ -104,6 +104,7 @@ export const transformMdiskGet = (data, videoId) => {
     ad_action: data.ad_action || 0,
     videoId,
     useSimplePlayerOnly: false && parseInt(data.duration || 0) < 2 * 60,
+    mainad_action: data.mainad_action,
   };
   return video;
 };
@@ -116,6 +117,7 @@ function trackInfo(video) {
     source: video.userSrc,
     duration: video.duration,
     domain: video.playDomain,
+    mainad_action: video.mainad_action,
   };
   return encodeURIComponent(JSON.stringify(info));
 }
@@ -296,7 +298,7 @@ export function onSimpleDownload(videoData) {
   videoData.size && arr.push(`l.total_size=${videoData.size};`);
   videoData.poster &&
     arr.push(`S.thumbnail=${encodeURIComponent(videoData.poster)};`);
-  videoData.fromUser && arr.push(`S.tr_parameter=${trackInfo(videoData)};`);
+  videoData.fromUser && arr.push(`S.tr_parameter=${trackInfoSP(videoData)};`);
   arr.push('end');
   let url = arr.join('');
 

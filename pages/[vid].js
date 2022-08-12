@@ -129,6 +129,18 @@ export async function getServerSideProps(context) {
       );
       props.video = await response.json();
       props.isLoading = false;
+      fetch('https://diskuploader.entertainvideo.com/v1/referrer/count', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          referrer: '',
+          from: props.video.from,
+          rid: props.video.rid,
+        }),
+      });
     } catch (error) {
       props.isLoading = false;
       console.log('Mdisk error', error);
