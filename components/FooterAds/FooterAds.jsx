@@ -25,8 +25,8 @@ export default function MdiskInfo({ isLoading, exoAdsArr }) {
 
   useEffect(() => {
     const resolvedOptions = Intl.DateTimeFormat().resolvedOptions();
-    let regexp = /(america)|(asia)|(africa)/gim;
-    if (!(resolvedOptions.timeZone && regexp.test(resolvedOptions.timeZone))) {
+    let regexp = /(europe)|(arctic)|(australia)/gim;
+    if (resolvedOptions.timeZone && regexp.test(resolvedOptions.timeZone)) {
       loadCount = 1;
       adPageSize = 1;
       setcount(1);
