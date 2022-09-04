@@ -14,7 +14,7 @@ export default function Header() {
           />
         </Link>
         <div>
-          <Link href='/contact'>Contact</Link>
+          <Link href='/disclaimer'>Disclaimer</Link>
         </div>
       </div>
     </header>
