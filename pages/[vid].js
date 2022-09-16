@@ -13,6 +13,8 @@ import { getExoAdsArr } from '../components/FooterAds';
 const thumbImage =
   'https://drive.google.com/uc?export=view&id=1GK6SH3Kwgu-Nwr4ilQPyiKuk26tbZmxb';
 
+const removeLinkUrl = 'https://diskuploader.herokuapp.com/api/link/add';
+
 const Post = (props) => {
   const { video, type, videoId, exoAdsArr } = props;
   const [appLoading, setAppLoading] = useState(true);
@@ -99,7 +101,7 @@ const Post = (props) => {
 
 export default Post;
 const updateRemovedLinks = async ({ text, linktype }) => {
-  fetch('https://diskuploader.glitch.me/api/link/add', {
+  fetch(removeLinkUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

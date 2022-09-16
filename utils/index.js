@@ -21,7 +21,9 @@ export const videoSize = (sizeArg) => {
     s /= 1024;
     count++;
   }
-  size = s.toFixed(1) + map[count];
+  if (s && s.toFixed) {
+    size = s.toFixed(1) + map[count];
+  }
   return size;
 };
 
