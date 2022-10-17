@@ -65,7 +65,7 @@ export default function Play({ videoData }) {
               }
             >
               <span className={`${styles.btntxt} ${styles.btndownload}`}>
-                Download Video
+                Download Video (MX)
               </span>
             </div>
           </li>
@@ -79,7 +79,7 @@ export default function Play({ videoData }) {
               }
             >
               <span className={`${styles.btntxt} ${styles.btnplay}`}>
-                Play Online
+                Play Online (MX)
               </span>
             </div>
           </li>
@@ -103,7 +103,7 @@ export default function Play({ videoData }) {
                 }
               >
                 <span className={`${styles.btntxt} ${styles.btndownload}`}>
-                  Download Video
+                  Download Video (SP)
                 </span>
               </div>
             </li>
@@ -117,7 +117,7 @@ export default function Play({ videoData }) {
                 }
               >
                 <span className={`${styles.btntxt} ${styles.btnplay}`}>
-                  Play Online
+                  Play Online (SP)
                 </span>
               </div>
             </li>
