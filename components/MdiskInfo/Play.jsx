@@ -65,7 +65,7 @@ export default function Play({ videoData }) {
               }
             >
               <span className={`${styles.btntxt} ${styles.btndownload}`}>
-                Download Video (MX)
+                Download (MX)
               </span>
             </div>
           </li>
@@ -103,7 +103,7 @@ export default function Play({ videoData }) {
                 }
               >
                 <span className={`${styles.btntxt} ${styles.btndownload}`}>
-                  Download Video (SP)
+                  Download (SP)
                 </span>
               </div>
             </li>
