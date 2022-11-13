@@ -57,12 +57,12 @@ export default function Report({ videoData }) {
             ? nameArr.map((el, i) => (
                 <span
                   key={`namekey-${i}`}
-                  className={el.link && styles.link}
+                  className={el.link ? styles.link : styles.textspan}
                   onClick={() => {
                     el.link && window.open(el.link, '_blank');
                   }}
                 >
-                  {el.text}&nbsp;
+                  {el.text}
                 </span>
               ))
             : videoData.name}

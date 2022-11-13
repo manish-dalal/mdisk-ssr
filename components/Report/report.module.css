@@ -136,3 +136,8 @@
   cursor: pointer;
   color: #0060df;
 }
+
+.reportbox .textspan,
+.reportbox .link {
+  margin-right: 4px;
+}
