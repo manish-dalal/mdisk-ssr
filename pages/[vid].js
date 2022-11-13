@@ -65,7 +65,7 @@ const Post = (props) => {
         <div
           className={styles.adoverlay}
           onClick={() => {
-            window.open('https://t.me/primexmov', '_blank');
+            window.open('https://telegram.dog/primexmov', '_blank');
             pushToDataLayer({ event: 'click_header', id: videoId || '' });
           }}
         />

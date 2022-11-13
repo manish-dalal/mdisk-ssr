@@ -131,3 +131,8 @@
   display: flex;
   align-items: center;
 }
+
+.reportbox .link {
+  cursor: pointer;
+  color: #0060df;
+}
