@@ -134,7 +134,7 @@
 
 .reportbox .link {
   cursor: pointer;
-  color: #0060df;
+  /* color: #0060df; */
 }
 
 .reportbox .textspan,
