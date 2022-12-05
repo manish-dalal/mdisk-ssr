@@ -15,7 +15,7 @@ export default function Dood({ videoId, height, width, onLoad, video }) {
       ></Script>
       <iframe
         id='dood-element'
-        src={`https://dood.pm/e/${videoId}`}
+        src={`https://dood.re/e/${videoId}`}
         height={height}
         width={width}
         title='Doodstream'
