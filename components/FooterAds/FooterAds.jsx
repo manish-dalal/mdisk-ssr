@@ -2,11 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from './FooterAds.module.css';
 import { getMobileOS } from '../../utils/get-mobile-os';
 
-// let adPageSize = getMobileOS() === 'Android' ? 10 : 1;
-// let loadCount = getMobileOS() === 'Android' ? 1000 : 1;
-
-let adPageSize = 1;
-let loadCount = 1;
+let adPageSize = getMobileOS() === 'Android' ? 10 : 1;
+let loadCount = getMobileOS() === 'Android' ? 1000 : 1;
 
 export default function MdiskInfo({ isLoading, exoAdsArr }) {
   const [count, setcount] = useState(adPageSize);
