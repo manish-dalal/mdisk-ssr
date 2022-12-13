@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from './FooterAds.module.css';
 import { getMobileOS } from '../../utils/get-mobile-os';
 
-let adPageSize = getMobileOS() === 'Android' ? 2 : 1;
-let loadCount = getMobileOS() === 'Android' ? 4 : 1;
+let adPageSize = getMobileOS() === 'Android' ? 1 : 1;
+let loadCount = getMobileOS() === 'Android' ? 1 : 1;
 
 export default function MdiskInfo({ isLoading, exoAdsArr }) {
   const [count, setcount] = useState(adPageSize);
@@ -24,13 +24,13 @@ export default function MdiskInfo({ isLoading, exoAdsArr }) {
   }, [isLoading]);
 
   useEffect(() => {
-    const resolvedOptions = Intl.DateTimeFormat().resolvedOptions();
-    let regexp = /(europe)|(arctic)|(australia)/gim;
-    if (resolvedOptions.timeZone && regexp.test(resolvedOptions.timeZone)) {
-      loadCount = 1;
-      adPageSize = 1;
-      setcount(1);
-    }
+    // const resolvedOptions = Intl.DateTimeFormat().resolvedOptions();
+    // let regexp = /(europe)|(arctic)|(australia)/gim;
+    // if (resolvedOptions.timeZone && regexp.test(resolvedOptions.timeZone)) {
+    //   loadCount = 1;
+    //   adPageSize = 1;
+    //   setcount(1);
+    // }
     if (!isLoading && loadCount > count) {
       timerRef.current = setTimeout(() => {
         const nextCount = count + adPageSize;
