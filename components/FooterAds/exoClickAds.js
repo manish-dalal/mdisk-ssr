@@ -176,6 +176,6 @@ export const ads = {
   },
   new: {
     'dood.eu.org': ['4742408'],
-    'mdisk.eu.org': ['4742238'],
+    'mdisk.eu.org': ['4865368'],
   },
 };
